@@ -22,12 +22,10 @@ public class ProjectResource {
     @GeneratedValue
     private Integer project_resource_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
+    @ManyToOne
     private Project project;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="resource_id")
+    @ManyToOne
     private Resource resource;
 }
 
