@@ -17,14 +17,14 @@ CREATE TABLE `resource`
 
 LOCK TABLES `resource` WRITE;
 INSERT INTO `resource`
-VALUES (0, 'Procurement and Contracting Requirements', 1000),
-       (1, 'General Requirements', 200),
-       (2, 'Existing Conditions', 200),
-       (3, 'Concrete', 700),
-       (4, 'Masonry', 1000),
-       (5, 'Metals', 1000),
-       (6, 'Wood, Plastics, and Composites', 1000),
-       (7, 'Thermal and Moisture Protection', 10000),
+VALUES (0, 'Procurement and Contracting Requirements', 000000),
+       (1, 'General Requirements', 010000),
+       (2, 'Existing Conditions', 020000),
+       (3, 'Concrete', 030000),
+       (4, 'Masonry', 040000),
+       (5, 'Metals', 050000),
+       (66, 'Wood, Plastics, and Composites', 060000),
+       (7, 'Thermal and Moisture Protection', 070000),
        (8, 'Openings', 080000),
        (9, 'Finishes', 090000),
        (10, 'Specialities', 100000),
