@@ -22,5 +22,5 @@ public class Project {
     @GeneratedValue
     private Integer project_id;
 
-    private Integer project_name;
+    private String project_name;
 }
