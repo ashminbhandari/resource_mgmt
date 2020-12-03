@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ResourceMgmtApplication {
 
 	public static void main(String[] args) {
-		System.out.println("12/2/2020");
 		SpringApplication.run(ResourceMgmtApplication.class, args);
 	}
 
