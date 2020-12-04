@@ -19,7 +19,7 @@ public class ProjectResourceServiceImpl implements ProjectResourceService{
 
     @Override
     public void deleteResourceFromProject(int pid, int cid) {
-        projectResourceRepository.deleteByProjectAndResource(pid,cid);
+        projectResourceRepository.deleteResource(pid,cid);
     }
 
     @Override

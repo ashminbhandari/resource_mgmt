@@ -25,7 +25,7 @@ public class ProjectController {
         return projectService.findAll();
     }
 
-    @GetMapping("/project/{keyword}")
+    @GetMapping("/project/search/{keyword}")
     List<Project> getAllByKeyword(@PathVariable String keyword){
         return projectService.findAllByKeyword(keyword);
     }
@@ -40,7 +40,7 @@ public class ProjectController {
         return resourceList;
     }
 
-    @PostMapping("/add-project-resources/{project_id}")
+    @PostMapping("/project/addResource/{project_id}")
     void addResourcesForProject(@RequestBody List<Resource> resources,@PathVariable int project_id){
         Project project = projectService.findByProjectId(project_id);
         List<ProjectResource> projectResourceList = new ArrayList<>();

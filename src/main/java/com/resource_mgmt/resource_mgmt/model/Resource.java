@@ -16,14 +16,14 @@ public class Resource {
     @GeneratedValue
     private Integer resource_id;
 
-    private Integer resource_code;
+    private String resource_code;
 
     private String resource_name;
 
     public Resource() {
     }
 
-    public Resource(Integer resource_code, String resource_name) {
+    public Resource(String resource_code, String resource_name) {
         this.resource_code = resource_code;
         this.resource_name = resource_name;
     }
@@ -36,11 +36,11 @@ public class Resource {
         this.resource_id = resource_id;
     }
 
-    public Integer getResource_code() {
+    public String getResource_code() {
         return resource_code;
     }
 
-    public void setResource_code(Integer resource_code) {
+    public void setResource_code(String resource_code) {
         this.resource_code = resource_code;
     }
 
