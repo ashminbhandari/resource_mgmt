@@ -57,8 +57,71 @@ CREATE TABLE `project_resource`
     `project`             int,
     `resource`            int,
     PRIMARY KEY (`project_resource_id`),
-    FOREIGN KEY (project) references project (project_id),
-    FOREIGN KEY (resource) references resource (resource_id)
+    FOREIGN KEY (`project`) references project (project_id),
+    FOREIGN KEY (`resource`) references resource (resource_id)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 6
   DEFAULT CHARSET = latin1;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `user_profile`;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE `user_profile`
+(
+    `user_profile_id` int NOT NULL AUTO_INCREMENT,
+    `user_type`       TEXT,
+    PRIMARY KEY (`user_profile_id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 6
+  DEFAULT CHARSET = latin1;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `user`;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE `user`
+(
+    `user_id`         int NOT NULL AUTO_INCREMENT,
+    `user_username`   TEXT,
+    `user_password`   TEXT,
+    `user_profile_id` int,
+    PRIMARY KEY (`user_id`),
+    FOREIGN KEY (`user_profile_id`) references user_profile (`user_profile_id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 6
+  DEFAULT CHARSET = latin1;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `column_added`;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE `column_added`
+(
+    `column_added_name` VARCHAR(700),
+    PRIMARY KEY (column_added_name)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 6
+    DEFAULT CHARSET = latin1;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS `column_added_row_value`;
+SET FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE `column_added_row_value`
+(
+    `column_added_row_value_id` int NOT NULL AUTO_INCREMENT,
+    `resource_id`               int UNIQUE,
+    `column_added_name` VARCHAR(700) not null,
+    PRIMARY KEY (`column_added_row_value_id`),
+    FOREIGN KEY (`column_added_name`) references column_added(`column_added_name`),
+    FOREIGN KEY (`resource_id`) references resource (`resource_id`)
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 6
+  DEFAULT CHARSET = latin1;
+
+
+
+
+

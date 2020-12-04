@@ -1,4 +1,4 @@
-package com.resource_mgmt.resource_mgmt.model;
+package com.resource_mgmt.resource_mgmt.entity;
 
 import javax.persistence.*;
 
@@ -10,22 +10,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="project_resource")
+@Table(name="column_added")
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class ProjectResource {
+public class ColumnAdded {
     @Id
-    @GeneratedValue
-    private Integer project_resource_id;
-
-    @ManyToOne
-    private Project project;
-
-    @ManyToOne
-    private Resource resource;
+    private String column_added_name;
 }
-
