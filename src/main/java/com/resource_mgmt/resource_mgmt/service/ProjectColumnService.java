@@ -1,6 +1,6 @@
 package com.resource_mgmt.resource_mgmt.service;
 
-import com.resource_mgmt.resource_mgmt.model.ProjectColumn;
+import com.resource_mgmt.resource_mgmt.entity.ProjectColumn;
 
 import java.util.List;
 

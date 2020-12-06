@@ -1,7 +1,6 @@
 package com.resource_mgmt.resource_mgmt.service;
 
-import com.resource_mgmt.resource_mgmt.model.Project;
-import com.resource_mgmt.resource_mgmt.model.ProjectResource;
+import com.resource_mgmt.resource_mgmt.entity.Project;
 import com.resource_mgmt.resource_mgmt.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
