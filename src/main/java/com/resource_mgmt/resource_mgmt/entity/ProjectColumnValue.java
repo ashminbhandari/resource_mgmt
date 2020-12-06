@@ -1,5 +1,7 @@
 package com.resource_mgmt.resource_mgmt.model;
 
+import com.resource_mgmt.resource_mgmt.entity.Project;
+
 import java.util.Map;
 
 public class ProjectColumnValue {

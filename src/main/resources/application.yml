@@ -2,15 +2,18 @@ server:
   port: 8086
   servlet:
     context-path: /
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mgmt
+    url: jdbc:mysql://localhost:3306/resource_mgmt
     username: root
-    password: QIUHEchamygn1996@
+    password: password
+
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+
 logging:
   level:
     org:
