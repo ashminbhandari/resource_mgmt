@@ -22,5 +22,7 @@ public interface ProjectResourceRepository extends JpaRepository<ProjectResource
     @Query(value = "DELETE FROM project_resource WHERE project_id = ?1 and resource_id=?2", nativeQuery = true)
     void deleteResource(int pid, int rid);
 
+    @Query(value="select * from project_resource where project_id=?1 and resource_id=?2", nativeQuery = true)
+    ProjectResource findByProjectAndResource(int pid, int cid);
 
 }

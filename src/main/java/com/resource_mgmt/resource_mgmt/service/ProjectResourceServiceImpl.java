@@ -12,14 +12,21 @@ public class ProjectResourceServiceImpl implements ProjectResourceService{
 
     @Autowired
     ProjectResourceRepository projectResourceRepository;
+
+    @Override
+    public boolean isHave(int pid, int rid) {
+        ProjectResource projectResource = projectResourceRepository.findByProjectAndResource(pid,rid);
+        return projectResource!=null;
+    }
+
     @Override
     public List<ProjectResource> getAllResourceByProjectId(int id) {
         return projectResourceRepository.findAllByProject(id);
     }
 
     @Override
-    public void deleteResourceFromProject(int pid, int cid) {
-        projectResourceRepository.deleteResource(pid,cid);
+    public void deleteResourceFromProject(int pid, int rid) {
+        projectResourceRepository.deleteResource(pid,rid);
     }
 
     @Override

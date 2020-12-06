@@ -1,28 +1,41 @@
 package com.resource_mgmt.resource_mgmt.controller;
 
 
-import com.resource_mgmt.resource_mgmt.model.Project;
-import com.resource_mgmt.resource_mgmt.model.ProjectResource;
-import com.resource_mgmt.resource_mgmt.model.Resource;
-import com.resource_mgmt.resource_mgmt.service.ProjectResourceServiceImpl;
-import com.resource_mgmt.resource_mgmt.service.ProjectServiceImpl;
+import com.resource_mgmt.resource_mgmt.model.*;
+import com.resource_mgmt.resource_mgmt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ProjectController {
 
     @Autowired
-    ProjectServiceImpl projectService;
+    ProjectService projectService;
     @Autowired
-    ProjectResourceServiceImpl projectResourceService;
+    ProjectResourceService projectResourceService;
+    @Autowired
+    ProjectColumnService projectColumnService;
 
-    @GetMapping("/projects")
+    @GetMapping("/project/show")
     List<Project> getAll(){
         return projectService.findAll();
+    }
+
+    @PostMapping("/project/add/{project_name}")
+    void addProject(@PathVariable String project_name){
+        Project project = new Project(project_name);
+        List<ProjectColumn> projectColumns = new ArrayList<>();
+        List<String> columns = projectColumnService.getAllColumnName();
+        for(String column:columns){
+            projectColumns.add(new ProjectColumn(project,column));
+        }
+        projectColumnService.addNewColumn(projectColumns);
+        projectService.add(project);
     }
 
     @GetMapping("/project/search/{keyword}")
@@ -30,31 +43,70 @@ public class ProjectController {
         return projectService.findAllByKeyword(keyword);
     }
 
-    @GetMapping("/project/{id}")
-    List<Resource> getAllResourceForProject(@PathVariable int id){
+    @GetMapping("/project/{project_id}")
+    List<Resource> getAllResourceForProject(@PathVariable int project_id){
         List<Resource> resourceList = new ArrayList<>();
-        List<ProjectResource> projectResourceList = projectResourceService.getAllResourceByProjectId(id);
+        List<ProjectResource> projectResourceList = projectResourceService.getAllResourceByProjectId(project_id);
         for(ProjectResource pr:projectResourceList){
             resourceList.add(pr.getResource());
         }
         return resourceList;
     }
 
-    @PostMapping("/project/addResource/{project_id}")
+    @PostMapping("/project/{project_id}/add/resource")
     void addResourcesForProject(@RequestBody List<Resource> resources,@PathVariable int project_id){
         Project project = projectService.findByProjectId(project_id);
         List<ProjectResource> projectResourceList = new ArrayList<>();
         for(Resource resource:resources){
-            projectResourceList.add(new ProjectResource(project,resource));
+            if(!projectResourceService.isHave(project_id,resource.getResource_id()))
+                projectResourceList.add(new ProjectResource(project,resource));
         }
         projectResourceService.addResourcesForProject(projectResourceList);
     }
 
-    @DeleteMapping("/project/delete/{project_id}")
-    void deleteReesourceForPorject(@RequestBody List<Resource> resources, @PathVariable int project_id){
-        for(Resource resource:resources){
-            projectResourceService.deleteResourceFromProject(project_id,resource.getResource_id());
+    @DeleteMapping("/project/{project_id}/delete/resource")
+    void deleteReesourceForPorject(@RequestBody List<Integer> resourceIds, @PathVariable int project_id){
+        for(int resource_id:resourceIds){
+            if(projectResourceService.isHave(project_id,resource_id))
+                projectResourceService.deleteResourceFromProject(project_id,resource_id);
         }
+    }
+
+    @PostMapping("/project/update/{project_id}/{column_name}")
+    void addValueToColumn(@RequestBody String value, @PathVariable("project_id") int project_id,@PathVariable("column_name") String column_name){
+//        System.out.println(column_value);
+        projectColumnService.addValue(value,project_id,column_name);
+    }
+
+    @GetMapping("/project/show/columns")
+    List<ProjectColumnValue> getAllColumn(){
+        List<ProjectColumnValue> projectColumnValues = new ArrayList<>();
+        List<Project> projects = projectService.findAll();
+        for(Project project:projects){
+            int pid = project.getProject_id();
+            Map<String,String> column_value = new HashMap<>();
+            List<ProjectColumn> projectColumns = projectColumnService.getColumnsForProject(pid);
+            for(ProjectColumn projectColumn:projectColumns){
+                column_value.put(projectColumn.getColumn_name(),projectColumn.getColumn_value());
+            }
+           projectColumnValues.add(new ProjectColumnValue(project, column_value));
+        }
+        return projectColumnValues;
+    }
+
+    @PostMapping("/project/add/column/{column_name}")
+    void addColumn(@PathVariable String column_name){
+        List<Project> projects = projectService.findAll();
+        List<ProjectColumn> projectColumns = new ArrayList<>();
+        for(Project project:projects){
+            projectColumns.add(new ProjectColumn(project,column_name));
+        }
+        projectColumnService.addNewColumn(projectColumns);
+    }
+
+    @DeleteMapping("/project/delete/column/{column_name}")
+    void deleteColumn(@PathVariable String column_name){
+        projectColumnService.deleteColumn(column_name);
     }
 
 }

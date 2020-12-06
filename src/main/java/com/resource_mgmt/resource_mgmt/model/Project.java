@@ -16,8 +16,7 @@ public class Project {
     public Project() {
     }
 
-    public Project(Integer project_id,String project_name) {
-        this.project_id =project_id;
+    public Project(String project_name) {
         this.project_name = project_name;
     }
 
