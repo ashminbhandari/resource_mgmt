@@ -23,3 +23,4 @@ public interface ResourceRepository extends PagingAndSortingRepository<Resource,
     @Transactional
     int updateResource(int resource_id, int resource_code, String resource_name);
 }
+
