@@ -1,12 +1,17 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /
 spring:
-  profiles:
-    active: dev
-
----
-
-spring:
-  profiles: dev
-  autoconfigure:
-    exclude:
-    - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-    - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  datasource:
+    url: jdbc:mysql://localhost:3306/mgmt
+    username: root
+    password: QIUHEchamygn1996@
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+logging:
+  level:
+    org:
+      springframework: ERROR
