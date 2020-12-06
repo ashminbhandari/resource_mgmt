@@ -112,7 +112,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 CREATE TABLE `column_added_row_value`
 (
     `column_added_row_value_id` int NOT NULL AUTO_INCREMENT,
-    `resource_id`               int UNIQUE,
+    `resource_id`               int,
     `column_added_name` VARCHAR(700) not null,
     PRIMARY KEY (`column_added_row_value_id`),
     FOREIGN KEY (`column_added_name`) references column_added(`column_added_name`),
@@ -120,6 +120,8 @@ CREATE TABLE `column_added_row_value`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 6
   DEFAULT CHARSET = latin1;
+
+ALTER TABLE `column_added_row_value` ADD UNIQUE `unique_index`(`column_added_name`, `resource_id`);
 
 
 
