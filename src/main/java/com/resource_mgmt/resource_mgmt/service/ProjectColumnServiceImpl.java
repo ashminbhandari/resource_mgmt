@@ -1,6 +1,6 @@
 package com.resource_mgmt.resource_mgmt.service;
 
-import com.resource_mgmt.resource_mgmt.model.ProjectColumn;
+import com.resource_mgmt.resource_mgmt.entity.ProjectColumn;
 import com.resource_mgmt.resource_mgmt.repository.ProjectColumnRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

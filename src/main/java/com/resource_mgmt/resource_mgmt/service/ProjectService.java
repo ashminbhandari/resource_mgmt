@@ -1,7 +1,6 @@
 package com.resource_mgmt.resource_mgmt.service;
 
-import com.resource_mgmt.resource_mgmt.model.Project;
-import org.springframework.stereotype.Service;
+import com.resource_mgmt.resource_mgmt.entity.Project;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.resource_mgmt.resource_mgmt.repository;
 
-import com.resource_mgmt.resource_mgmt.model.ProjectResource;
+import com.resource_mgmt.resource_mgmt.entity.ProjectResource;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
