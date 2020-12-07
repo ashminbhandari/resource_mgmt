@@ -1,6 +1,4 @@
-package com.resource_mgmt.resource_mgmt.model;
-
-import com.resource_mgmt.resource_mgmt.entity.Project;
+package com.resource_mgmt.resource_mgmt.entity;
 
 import java.util.Map;
 
