@@ -1,4 +1,4 @@
-package com.resource_mgmt.resource_mgmt.model;
+package com.resource_mgmt.resource_mgmt.entity;
 
 import com.resource_mgmt.resource_mgmt.entity.Project;
 

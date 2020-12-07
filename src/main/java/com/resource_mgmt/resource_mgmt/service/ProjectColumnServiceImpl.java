@@ -1,12 +1,12 @@
 package com.resource_mgmt.resource_mgmt.service;
 
+import java.util.List;
+
 import com.resource_mgmt.resource_mgmt.entity.ProjectColumn;
 import com.resource_mgmt.resource_mgmt.repository.ProjectColumnRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ProjectColumnServiceImpl implements ProjectColumnService {

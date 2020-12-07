@@ -79,8 +79,8 @@ public class ProjectController {
     }
 
     @GetMapping("/project/show/columns")
-    List<com.resource_mgmt.resource_mgmt.model.ProjectColumnValue> getAllColumn(){
-        List<com.resource_mgmt.resource_mgmt.model.ProjectColumnValue> projectColumnValues = new ArrayList<>();
+    List<com.resource_mgmt.resource_mgmt.entity.ProjectColumnValue> getAllColumn(){
+        List<com.resource_mgmt.resource_mgmt.entity.ProjectColumnValue> projectColumnValues = new ArrayList<>();
         List<Project> projects = projectService.findAll();
         for(Project project:projects){
             int pid = project.getProject_id();
@@ -89,7 +89,7 @@ public class ProjectController {
             for(ProjectColumn projectColumn:projectColumns){
                 column_value.put(projectColumn.getColumn_name(),projectColumn.getColumn_value());
             }
-           projectColumnValues.add(new com.resource_mgmt.resource_mgmt.model.ProjectColumnValue(project, column_value));
+           projectColumnValues.add(new com.resource_mgmt.resource_mgmt.entity.ProjectColumnValue(project, column_value));
         }
         return projectColumnValues;
     }
