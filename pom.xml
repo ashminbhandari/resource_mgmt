@@ -8,10 +8,10 @@
 		<version>2.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.resource_mgmt</groupId>
-	<artifactId>resource_mgmt</artifactId>
+	<groupId>com.itlize</groupId>
+	<artifactId>resrcmgmt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>resource_mgmt</name>
+	<name>resrcmgmt</name>
 	<description>Resource Manager</description>
 
 	<properties>
@@ -26,6 +26,14 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-data</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
