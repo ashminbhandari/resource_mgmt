@@ -123,7 +123,11 @@ CREATE TABLE `column_added_row_value`
 
 ALTER TABLE `column_added_row_value` ADD UNIQUE `unique_index`(`column_added_name`, `resource_id`);
 
-
-
-
+create table itlize_user_profile
+(
+    id int null,
+    type int null
+);
+INSERT IGNORE INTO `resource_mgmt`.`itlize_user_profile` (`id`, `type`) VALUES ('1', 'ADMIN');
+INSERT IGNORE INTO `resource_mgmt`.`itlize_user_profile` (`id`, `type`) VALUES ('2', 'USER');
 
