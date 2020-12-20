@@ -13,6 +13,7 @@ import com.itlize.resrcmgmt.entity.*;
 import com.itlize.resrcmgmt.service.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProjectController {
 
     @Autowired
